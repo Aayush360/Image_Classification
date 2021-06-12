@@ -1,0 +1,146 @@
+{% extends 'index.html' %}
+
+
+{% block body %}
+
+<div class="container" id="myrow">
+
+
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link active" id="uploadimg" href="#upload-image">Upload Image</a>
+        </li>
+    </ul>
+
+    <div class='tab-content'>
+
+        <div class='tab-pane active' id="upload-image" role="tabpanel" aria-labelledby="uploadimg">
+            <div class="row">
+                <div class="col">
+                    <form action="#" method="POST" enctype="multipart/form-data">
+                        <!-- file input -->
+                        <p>
+
+                            <input type="file" name="my_image" class="btn" style="background-color:seagreen; color:seashell"required>
+
+                        </p>
+
+                        <!--submit-->
+                        <p>
+                            <input type="submit" value="submit" class="btn btn-primary" style="background-color:seagreen; color:seashell">
+
+                        </p>
+
+                        <p align='center'>
+                            <strong> Instruction: </strong> <br>
+                            Please upload the file with following extension '.png','.jpg','.jpeg'.
+                            For other image extension you will be <strong>redirected to </strong> 404
+                        </p>
+
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+    </div>
+
+
+</div>
+
+<br>
+<br>
+{% if fileupload==True %}
+
+
+<div class='container', id='my_table'>
+
+    <div class='row'>
+
+        <div class='col col-8'>
+
+            <table>
+                <tr>
+                    <th>Lables </th>
+                    <th>Confidence Score</th>
+                </tr>
+                {% for name,score in data.items() %}
+
+                <tr>
+                    <td> {{name}} </td>
+                    <td> {{score}} </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </table>
+
+            
+
+        </div>
+        
+        <div class="col col-4">
+            <img src="static/uploads/{{image_name}}" alt="hello uploaded", width={{width}}, height={{height}}>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+{% endif %}
+
+
+
+
+{% if extension ==True %}
+
+<div class="container" id='my_table'>
+    <div class='row'>
+
+        <div class='col'>
+
+           <strong> <p> Invalid Extension</p> </strong>
+            <p> Make sure you upload image with correct extension (.jpg, .jpeg, .png only)</p>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+{% endif %}
+<style>
+
+    #myrow{
+        background-color:mediumaquamarine;
+    }
+    #my_table{
+        background-color:mediumaquamarine;
+        padding: 5%;
+        align-content: center;
+
+
+    }
+
+    table{
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    table,th,td{
+        border: 1px solid black;
+    }
+</style>
+
+{% endblock body %}

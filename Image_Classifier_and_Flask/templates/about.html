@@ -1,0 +1,38 @@
+{% extends 'index.html' %}
+
+
+{% block body %}
+
+
+<div class='container' id='con'>
+    <div class="row">
+        
+
+
+        <pre>
+
+            <br>
+        <strong>
+            This is a project for image classification.
+            Image Processing like Thresholding, Histogram Equalization, HOG features, resizing and rescaling was used.
+            We have used 20 labels for training using Stochastic Gradient Descent.
+            Various models was tested using Grid Search CV.
+            Finally after settling on the best model found by the grid search we used flask to deploy the webapp.
+        </strong>
+        </pre>
+    </div>
+
+
+
+</div>
+
+
+<style>
+
+    #con {
+        background-color:mediumaquamarine;
+    }
+</style>
+
+
+{% endblock body %}
